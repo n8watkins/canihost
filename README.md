@@ -1,8 +1,8 @@
 # CanIHost — search self-hosted apps, plan your homelab, generate docker-compose
 
-**A real, searchable frontend for the famous [awesome-selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted) list — plus a "Can I run this?" resource calculator and an auto docker-compose generator the list can't give you.**
+**A real frontend for the famous [awesome-selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted) list that lets you browse by _what you want to do_ ("replace Google Photos") instead of tech jargon ("Photo Galleries") — plus a "Can I run this?" resource calculator and an auto docker-compose generator the list can't give you.**
 
-Browse 1,300+ self-hosted apps and selfhosted alternatives, check maintenance signals at a glance, estimate your homelab's combined RAM/CPU footprint, see ARM-vs-x86 compatibility, and export a starter `docker-compose.yml` — all free, open-source, and 100% client-side.
+Start from a goal — _replace Google Photos, run your own Netflix, block ads network-wide_ — and CanIHost shows the self-hosted apps that do it, tells you whether your box can run them, and ships the `docker-compose.yml`. Browse 1,300+ apps, check maintenance signals at a glance, estimate combined RAM/CPU, and see ARM-vs-x86 compatibility — all free, open-source, and 100% client-side.
 
 🌐 **Live: [canihost.vercel.app](https://canihost.vercel.app)** · ☕ [Support on Ko-fi](https://ko-fi.com/n8watkins)
 
@@ -12,14 +12,18 @@ Browse 1,300+ self-hosted apps and selfhosted alternatives, check maintenance si
 
 [awesome-selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted) is one of the best community resources on the internet — but it's a README sorted into A→Z categories. You can't search it well, you can't tell which apps are still maintained, and it certainly won't tell you whether your Raspberry Pi can actually *run* the five things you just got excited about.
 
-CanIHost fixes that with three things:
+Worse, every directory (including selfh.st and awesome-selfhosted.net) organizes by *what the software is* — but nobody wakes up wanting "a Feed Reader." They want to *replace Google Reader*. CanIHost fixes all of that with four things:
 
-1. **A real frontend** — instant search and rich filters over the whole dataset.
-2. **A resource calculator** — "Can I run this?" gives an honest combined RAM/CPU estimate and an ARM/x86 read for any set of apps you pick.
-3. **A compose generator** — turn your selection into a starter `docker-compose.yml` you can copy or download.
+1. **Goal-first browsing** — 24 plain-language goals ("Replace Google Photos", "Run my own Netflix", "Block ads on my whole network") that map to the apps which actually do the job, with the proprietary service each one replaces.
+2. **A real frontend** — instant search and rich filters over the whole dataset.
+3. **A resource calculator** — "Can I run this?" gives an honest combined RAM/CPU estimate and an ARM/x86 read for any set of apps you pick.
+4. **A compose generator** — turn your selection into a starter `docker-compose.yml` you can copy or download.
+
+![Browse by goal — what you want to do, not the tech category](assets/goals.png)
 
 ## Features
 
+- **🎯 Goal-first discovery** — pick from 24 goals framed as "Replace _X_" instead of hunting tech categories; each goal surfaces hand-picked top apps first, then everything else that fits.
 - **Instant client-side search** over 1,300+ apps — name, description, category, language.
 - **Filters** — category, language/platform, license, Docker support, "actively maintained only," and a "hide third-party-dependent apps" flag.
 - **Maintenance signals on every card** — GitHub star count plus a recency badge (**Active** / **Aging** / **Stale**) derived from the last commit date, so you can avoid abandonware.

@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import type { Meta } from "@/lib/types";
-import { ServerIcon, ChipIcon, CubeIcon, SearchIcon } from "@/components/icons";
+import { USE_CASES } from "@/lib/usecases";
+import { ChipIcon, CubeIcon } from "@/components/icons";
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 14 },
@@ -10,7 +11,12 @@ const fade = (delay: number) => ({
   transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] as const },
 });
 
+// A few marquee goals previewed in the hero; clicking jumps to the goal grid.
+const PREVIEW = ["photos", "movies", "passwords", "adblock", "git", "automation"];
+
 export function Hero({ meta }: { meta: Meta }) {
+  const preview = PREVIEW.map((id) => USE_CASES.find((u) => u.id === id)!);
+
   return (
     <section className="relative overflow-hidden border-b border-edge">
       <div className="blueprint-grid absolute inset-0 -z-10" />
@@ -20,87 +26,65 @@ export function Hero({ meta }: { meta: Meta }) {
         <motion.div {...fade(0)} className="flex items-center gap-2">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-edge2 bg-card px-3 py-1 text-xs font-medium text-mute shadow-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-good" />
-            {meta.count.toLocaleString()} apps · {meta.active.toLocaleString()} actively maintained
+            {meta.count.toLocaleString()} apps · {meta.active.toLocaleString()} actively maintained · {meta.categories.length} categories
           </span>
         </motion.div>
 
         <motion.h1
           {...fade(0.08)}
-          className="mt-5 max-w-3xl text-balance text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-5xl"
+          className="mt-5 max-w-3xl text-balance text-4xl font-extrabold leading-[1.04] tracking-tight text-ink sm:text-6xl"
         >
-          Find self-hosted apps.{" "}
-          <span className="text-accent">Plan your homelab.</span>{" "}
-          Ship the compose file.
+          Stop paying for it.{" "}
+          <span className="text-accent">Self-host it.</span>
         </motion.h1>
 
         <motion.p
           {...fade(0.16)}
           className="mt-4 max-w-2xl text-base leading-relaxed text-mute sm:text-lg"
         >
-          A real, searchable frontend for the famous{" "}
-          <span className="font-medium text-ink">awesome-selfhosted</span> list —
-          plus two things the list can&apos;t do: a{" "}
-          <span className="font-medium text-accent2">&ldquo;Can I run this?&rdquo;</span>{" "}
-          resource calculator and an auto{" "}
-          <span className="font-medium text-accent2">docker-compose generator</span>.
+          Other directories make you browse by tech category. CanIHost lets you
+          start with <span className="font-medium text-ink">what you want to do</span> —
+          &ldquo;replace Google Photos&rdquo;, &ldquo;run my own Netflix&rdquo; — then
+          tells you{" "}
+          <span className="font-medium text-accent2">if your box can run it</span> and{" "}
+          <span className="font-medium text-accent2">ships the docker-compose</span>.
         </motion.p>
 
-        <motion.div {...fade(0.24)} className="mt-7 flex flex-wrap gap-3">
-          <a
-            href="#browse"
-            className="inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-accent2"
-          >
-            <SearchIcon className="h-4 w-4" /> Browse apps
-          </a>
-          <a
-            href="#studio"
-            className="inline-flex items-center gap-2 rounded-xl border border-edge2 bg-card px-5 py-3 text-sm font-semibold text-ink shadow-sm transition hover:border-accent hover:text-accent2"
-          >
-            <ChipIcon className="h-4 w-4" /> Open the build studio
-          </a>
+        {/* Differentiator pills */}
+        <motion.div {...fade(0.22)} className="mt-5 flex flex-wrap gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-lg border border-edge2 bg-card px-3 py-1.5 text-xs font-semibold text-ink shadow-sm">
+            <ChipIcon className="h-3.5 w-3.5 text-accent" /> &ldquo;Can I run this?&rdquo; calculator
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-lg border border-edge2 bg-card px-3 py-1.5 text-xs font-semibold text-ink shadow-sm">
+            <CubeIcon className="h-3.5 w-3.5 text-accent" /> docker-compose generator
+          </span>
         </motion.div>
 
-        <motion.div
-          {...fade(0.32)}
-          className="mt-10 grid gap-3 sm:grid-cols-3"
-        >
-          <Feature
-            icon={<SearchIcon className="h-5 w-5" />}
-            title="Instant search & filters"
-            body="Filter by category, language, license, Docker support, maintenance status, and third-party deps."
-          />
-          <Feature
-            icon={<ChipIcon className="h-5 w-5" />}
-            title="Can I run this?"
-            body="Select apps, get an honest combined RAM/CPU estimate and an ARM vs x86 compatibility read."
-          />
-          <Feature
-            icon={<CubeIcon className="h-5 w-5" />}
-            title="Compose generator"
-            body="Turn your selection into a starter docker-compose.yml — copy or download, ready to edit."
-          />
+        {/* Goal preview chips → scroll to the goal grid */}
+        <motion.div {...fade(0.3)} className="mt-8">
+          <p className="text-xs font-semibold uppercase tracking-wide text-mute">
+            Popular goals
+          </p>
+          <div className="mt-2.5 flex flex-wrap gap-2">
+            {preview.map((uc) => (
+              <a
+                key={uc.id}
+                href="#browse"
+                className="group inline-flex items-center gap-1.5 rounded-full border border-edge2 bg-card px-3.5 py-2 text-sm font-medium text-ink shadow-sm transition hover:-translate-y-0.5 hover:border-accent hover:text-accent2"
+              >
+                <span aria-hidden>{uc.icon}</span>
+                {uc.label}
+              </a>
+            ))}
+            <a
+              href="#browse"
+              className="inline-flex items-center rounded-full border border-dashed border-edge2 px-3.5 py-2 text-sm font-medium text-mute transition hover:border-accent hover:text-accent2"
+            >
+              + {USE_CASES.length - preview.length} more →
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
-  );
-}
-
-function Feature({
-  icon,
-  title,
-  body,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  body: string;
-}) {
-  return (
-    <div className="rounded-xl border border-edge bg-card/70 p-4 backdrop-blur-sm transition hover:border-edge2 hover:shadow-sm">
-      <div className="grid h-9 w-9 place-items-center rounded-lg border border-edge2 bg-bg2 text-accent">
-        {icon}
-      </div>
-      <p className="mt-3 text-sm font-bold text-ink">{title}</p>
-      <p className="mt-1 text-xs leading-relaxed text-mute">{body}</p>
-    </div>
   );
 }

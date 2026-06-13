@@ -1,9 +1,11 @@
 "use client";
 
-import { SearchIcon, CloseIcon } from "@/components/icons";
+import { useState } from "react";
+import { SearchIcon, CloseIcon, ChipIcon } from "@/components/icons";
 
 export type Filters = {
   query: string;
+  goal: string;
   category: string;
   platform: string;
   license: string;
@@ -14,6 +16,7 @@ export type Filters = {
 
 export const EMPTY_FILTERS: Filters = {
   query: "",
+  goal: "",
   category: "",
   platform: "",
   license: "",
@@ -42,11 +45,12 @@ export function FilterBar({
   resultCount: number;
   total: number;
 }) {
+  const [showAdvanced, setShowAdvanced] = useState(false);
+
   const set = <K extends keyof Filters>(k: K, v: Filters[K]) =>
     setFilters({ ...filters, [k]: v });
 
-  const anyActive =
-    filters.query ||
+  const techActive =
     filters.category ||
     filters.platform ||
     filters.license ||
@@ -54,24 +58,47 @@ export function FilterBar({
     filters.hideThirdParty ||
     filters.activeOnly;
 
+  const anyActive = filters.query || filters.goal || techActive;
+
   return (
     <div className="sticky top-[57px] z-20 -mx-4 border-b border-edge bg-bg/90 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6">
       <div className="flex flex-col gap-3">
-        {/* Search */}
-        <div className="relative">
-          <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-mute" />
-          <input
-            type="search"
-            value={filters.query}
-            onChange={(e) => set("query", e.target.value)}
-            placeholder="Search 1,300+ self-hosted apps — name, description, or category…"
-            aria-label="Search self-hosted apps"
-            className="h-11 w-full rounded-xl border border-edge2 bg-card pl-10 pr-4 text-sm shadow-sm transition placeholder:text-mute/70 hover:border-mute focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-          />
+        {/* Search + advanced toggle */}
+        <div className="flex items-center gap-2">
+          <div className="relative flex-1">
+            <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-mute" />
+            <input
+              type="search"
+              value={filters.query}
+              onChange={(e) => set("query", e.target.value)}
+              placeholder="Search 1,300+ self-hosted apps — name, description, or category…"
+              aria-label="Search self-hosted apps"
+              className="h-11 w-full rounded-xl border border-edge2 bg-card pl-10 pr-4 text-sm shadow-sm transition placeholder:text-mute/70 hover:border-mute focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+            />
+          </div>
+          <button
+            onClick={() => setShowAdvanced((v) => !v)}
+            aria-expanded={showAdvanced}
+            className={`inline-flex h-11 shrink-0 items-center gap-1.5 rounded-xl border px-3.5 text-sm font-semibold shadow-sm transition ${
+              showAdvanced || techActive
+                ? "border-accent bg-accent/10 text-accent2"
+                : "border-edge2 bg-card text-mute hover:border-mute hover:text-ink"
+            }`}
+          >
+            <ChipIcon className="h-4 w-4" />
+            <span className="hidden sm:inline">Tech filters</span>
+            {techActive ? (
+              <span className="grid h-4 w-4 place-items-center rounded-full bg-accent text-[10px] font-bold text-white">
+                !
+              </span>
+            ) : null}
+          </button>
         </div>
 
-        {/* Filters row */}
-        <div className="flex flex-wrap items-center gap-2">
+        {/* Advanced (tech) filters row — collapsed by default */}
+        <div
+          className={`${showAdvanced ? "flex" : "hidden"} flex-wrap items-center gap-2`}
+        >
           <select
             value={filters.category}
             onChange={(e) => set("category", e.target.value)}
@@ -132,16 +159,18 @@ export function FilterBar({
             onClick={() => set("hideThirdParty", !filters.hideThirdParty)}
             title="Hide apps that depend on an external service"
           />
+        </div>
 
+        {/* Always-visible status row */}
+        <div className="flex items-center gap-2">
           {anyActive && (
             <button
               onClick={() => setFilters(EMPTY_FILTERS)}
               className="inline-flex items-center gap-1 rounded-lg px-2 py-1.5 text-xs font-medium text-mute transition hover:text-bad"
             >
-              <CloseIcon className="h-3.5 w-3.5" /> Clear
+              <CloseIcon className="h-3.5 w-3.5" /> Clear all
             </button>
           )}
-
           <span className="ml-auto text-xs tabular-nums text-mute">
             <span className="font-semibold text-ink">{resultCount.toLocaleString()}</span>{" "}
             / {total.toLocaleString()} apps
