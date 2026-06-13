@@ -1,0 +1,313 @@
+{
+  "generatedAt": "2026-06-13",
+  "count": 1339,
+  "categories": [
+    "Analytics",
+    "Archiving and Digital Preservation (DP)",
+    "Automation",
+    "Blogging Platforms",
+    "Booking and Scheduling",
+    "Bookmarks and Link Sharing",
+    "Calendar & Contacts",
+    "Communication - Custom Communication Systems",
+    "Communication - Email - Complete Solutions",
+    "Communication - Email - Mail Delivery Agents",
+    "Communication - Email - Mail Transfer Agents",
+    "Communication - Email - Mailing Lists and Newsletters",
+    "Communication - Email - Webmail Clients",
+    "Communication - IRC",
+    "Communication - SIP",
+    "Communication - Social Networks and Forums",
+    "Communication - Video Conferencing",
+    "Communication - XMPP - Servers",
+    "Communication - XMPP - Web Clients",
+    "Community-Supported Agriculture (CSA)",
+    "Conference Management",
+    "Content Management Systems (CMS)",
+    "Customer Relationship Management (CRM)",
+    "DNS",
+    "Database Management",
+    "Document Management",
+    "Document Management - E-books",
+    "Document Management - Institutional Repository and Digital Library Software",
+    "Document Management - Integrated Library Systems (ILS)",
+    "E-commerce",
+    "Feed Readers",
+    "File Transfer & Synchronization",
+    "File Transfer - Object Storage & File Servers",
+    "File Transfer - Peer-to-peer Filesharing",
+    "File Transfer - Single-click & Drag-n-drop Upload",
+    "File Transfer - Web-based File Managers",
+    "Games",
+    "Games - Administrative Utilities & Control Panels",
+    "Genealogy",
+    "Generative Artificial Intelligence (GenAI)",
+    "Groupware",
+    "Health and Fitness",
+    "Human Resources Management (HRM)",
+    "Internet of Things (IoT)",
+    "Inventory Management",
+    "Knowledge Management Tools",
+    "Learning and Courses",
+    "Manufacturing",
+    "Maps and Global Positioning System (GPS)",
+    "Media Management",
+    "Media Streaming - Audio Streaming",
+    "Media Streaming - Multimedia Streaming",
+    "Media Streaming - Video Streaming",
+    "Miscellaneous",
+    "Money, Budgeting & Management",
+    "Network Utilities",
+    "Note-taking & Editors",
+    "Office Suites",
+    "Password Managers",
+    "Pastebins",
+    "Personal Dashboards",
+    "Photo Galleries",
+    "Polls and Events",
+    "Proxy",
+    "Recipe Management",
+    "Remote Access",
+    "Resource Planning",
+    "Search Engines",
+    "Self-hosting Solutions",
+    "Software Development - API Management",
+    "Software Development - Feature Toggle",
+    "Software Development - IDE & Tools",
+    "Software Development - Localization",
+    "Software Development - Low Code",
+    "Software Development - Project Management",
+    "Software Development - Testing",
+    "Task Management & To-do Lists",
+    "Ticketing",
+    "Time Tracking",
+    "URL Shorteners",
+    "Video Surveillance",
+    "Web Servers",
+    "Wikis"
+  ],
+  "platforms": [
+    ".NET",
+    "Ansible",
+    "Assembly",
+    "C",
+    "C#",
+    "C++",
+    "CommonLisp",
+    "Crystal",
+    "Dart",
+    "Deno",
+    "Docker",
+    "Elixir",
+    "Erlang",
+    "Go",
+    "Haskell",
+    "Haxe",
+    "Java",
+    "Javascript",
+    "K8S",
+    "Lua",
+    "Nix",
+    "Nodejs",
+    "OCaml",
+    "Objective-C",
+    "PHP",
+    "PLpgSQL",
+    "Perl",
+    "Python",
+    "Ruby",
+    "Rust",
+    "Scala",
+    "Shell",
+    "Unknown",
+    "deb"
+  ],
+  "licenses": [
+    {
+      "id": "⊘ Proprietary",
+      "name": "⊘ Proprietary"
+    },
+    {
+      "id": "Apache-2.0",
+      "name": "Apache, Version 2.0"
+    },
+    {
+      "id": "AAL",
+      "name": "Attribution Assurance License"
+    },
+    {
+      "id": "BSD-2-Clause",
+      "name": "BSD 2-clause \"Simplified\""
+    },
+    {
+      "id": "BSD-2-Clause-FreeBSD",
+      "name": "BSD 2-Clause FreeBSD License"
+    },
+    {
+      "id": "BSD-3-Clause",
+      "name": "BSD 3-Clause \"New\" or \"Revised\""
+    },
+    {
+      "id": "BSD-4-Clause",
+      "name": "BSD 4-clause \"Original\""
+    },
+    {
+      "id": "BSD-3-Clause-Attribution",
+      "name": "BSD with attribution"
+    },
+    {
+      "id": "0BSD",
+      "name": "BSD Zero-Clause Licence"
+    },
+    {
+      "id": "BSD-3-Clause-No-Military-License",
+      "name": "BSD-3-Clause-No-Military-License"
+    },
+    {
+      "id": "BUSL-1.1",
+      "name": "BUSL-1.1"
+    },
+    {
+      "id": "CC-BY-NC-4.0",
+      "name": "CC-BY-NC-4.0"
+    },
+    {
+      "id": "CC-BY-NC-SA-3.0",
+      "name": "CC-BY-NC-SA-3.0"
+    },
+    {
+      "id": "CC-BY-NC-SA-4.0",
+      "name": "CC-BY-NC-SA-4.0"
+    },
+    {
+      "id": "CECILL-B",
+      "name": "CEA CNRS INRIA Logiciel Libre"
+    },
+    {
+      "id": "CPAL-1.0",
+      "name": "Common Public Attribution License Version 1.0"
+    },
+    {
+      "id": "Commons-Clause",
+      "name": "Commons-Clause"
+    },
+    {
+      "id": "CC-BY-SA-3.0",
+      "name": "Creative Commons Attribution-ShareAlike 3.0 License"
+    },
+    {
+      "id": "CC-BY-SA-4.0",
+      "name": "Creative Commons Attribution-ShareAlike 4.0 License"
+    },
+    {
+      "id": "CAL-1.0",
+      "name": "Cryptographic Autonomy License 1.0"
+    },
+    {
+      "id": "WTFPL",
+      "name": "Do What the Fuck You Want to Public License"
+    },
+    {
+      "id": "EPL-1.0",
+      "name": "Eclipse Public License, Version 1.0"
+    },
+    {
+      "id": "EPL-2.0",
+      "name": "Eclipse Public License, Version 2.0"
+    },
+    {
+      "id": "ECL-2.0",
+      "name": "Educational Community License, Version 2.0"
+    },
+    {
+      "id": "Elastic-2.0",
+      "name": "Elastic-2.0"
+    },
+    {
+      "id": "EUPL-1.2",
+      "name": "European Union Public License 1.2"
+    },
+    {
+      "id": "FSL-1.1-MIT",
+      "name": "FSL-1.1-MIT"
+    },
+    {
+      "id": "AGPL-3.0",
+      "name": "GNU Affero General Public License 3.0"
+    },
+    {
+      "id": "GPL-1.0",
+      "name": "GNU General Public License 1.0"
+    },
+    {
+      "id": "GPL-2.0",
+      "name": "GNU General Public License 2.0"
+    },
+    {
+      "id": "GPL-3.0",
+      "name": "GNU General Public License 3.0"
+    },
+    {
+      "id": "IPL-1.0",
+      "name": "IBM Public License"
+    },
+    {
+      "id": "ISC",
+      "name": "Internet Systems Consortium License"
+    },
+    {
+      "id": "LGPL-2.1",
+      "name": "Lesser General Public License 2.1"
+    },
+    {
+      "id": "LGPL-3.0",
+      "name": "Lesser General Public License 3.0"
+    },
+    {
+      "id": "MIT",
+      "name": "MIT License"
+    },
+    {
+      "id": "MPL-2.0",
+      "name": "Mozilla Public License"
+    },
+    {
+      "id": "MPL-1.1",
+      "name": "Mozilla Public License Version 1.1"
+    },
+    {
+      "id": "OSL-3.0",
+      "name": "Open Software License 3.0"
+    },
+    {
+      "id": "CC0-1.0",
+      "name": "Public Domain/Creative Common Zero 1.0"
+    },
+    {
+      "id": "Sendmail",
+      "name": "Sendmail License"
+    },
+    {
+      "id": "SSPL-1.0",
+      "name": "SSPL-1.0"
+    },
+    {
+      "id": "SUL-1.0",
+      "name": "SUL-1.0"
+    },
+    {
+      "id": "Unlicense",
+      "name": "The Unlicense"
+    },
+    {
+      "id": "Zlib",
+      "name": "Zlib/libpng License"
+    },
+    {
+      "id": "ZPL-2.0",
+      "name": "Zope Public License 2.0"
+    }
+  ],
+  "withStars": 1139,
+  "active": 1059
+}
