@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { App, Meta } from "@/lib/types";
 import { AppCard } from "@/components/AppCard";
 import { FilterBar, EMPTY_FILTERS, type Filters } from "@/components/FilterBar";
@@ -29,11 +29,12 @@ export function Directory({ apps, meta }: { apps: App[]; meta: Meta }) {
   const filtered = useMemo(() => {
     const q = filters.query.trim().toLowerCase();
     const terms = q.split(/\s+/).filter(Boolean);
-    return base.filter((a) => {
+    const matched = base.filter((a) => {
       if (filters.category && !a.tags.includes(filters.category)) return false;
       if (filters.platform && !a.platforms.includes(filters.platform)) return false;
       if (filters.license && !a.licenses.includes(filters.license)) return false;
       if (filters.dockerOnly && !a.docker) return false;
+      if (filters.armOnly && a.arch.arm !== "likely") return false;
       if (filters.hideThirdParty && a.dependsThirdParty) return false;
       if (filters.activeOnly && a.maintenance.status !== "active") return false;
       if (terms.length) {
@@ -50,6 +51,25 @@ export function Directory({ apps, meta }: { apps: App[]; meta: Meta }) {
       }
       return true;
     });
+
+    const sorted = [...matched];
+    switch (filters.sort) {
+      case "stars":
+        sorted.sort((a, b) => (b.stars ?? 0) - (a.stars ?? 0));
+        break;
+      case "updated":
+        sorted.sort(
+          (a, b) => (a.maintenance.daysSince ?? 1e9) - (b.maintenance.daysSince ?? 1e9),
+        );
+        break;
+      case "ram":
+        sorted.sort((a, b) => a.resources.ramMB - b.resources.ramMB);
+        break;
+      case "name":
+        sorted.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+    }
+    return sorted;
   }, [base, filters]);
 
   const shown = filtered.slice(0, visible);
@@ -112,11 +132,9 @@ export function Directory({ apps, meta }: { apps: App[]; meta: Meta }) {
         ) : (
           <>
             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              <AnimatePresence mode="popLayout">
-                {shown.map((app) => (
-                  <AppCard key={app.id} app={app} />
-                ))}
-              </AnimatePresence>
+              {shown.map((app) => (
+                <AppCard key={app.id} app={app} />
+              ))}
             </div>
 
             {visible < filtered.length && (

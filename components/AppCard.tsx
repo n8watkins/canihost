@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import type { App } from "@/lib/types";
 import { shortCategory, primaryLanguage } from "@/lib/format";
 import { useSelection } from "@/components/SelectionContext";
+import { Logo } from "@/components/Logo";
 import {
   MaintenanceBadge,
   StarsBadge,
@@ -19,26 +19,26 @@ export function AppCard({ app }: { app: App }) {
   const lang = primaryLanguage(app);
 
   return (
-    <motion.article
-      layout
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.97 }}
-      transition={{ duration: 0.25 }}
-      className={`group relative flex flex-col rounded-xl border bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
-        selected ? "border-accent ring-1 ring-accent/40" : "border-edge hover:border-edge2"
+    <article
+      className={`fade-up group relative flex flex-col rounded-xl border bg-card p-4 shadow-sm transition-all duration-200 ease-out will-change-transform hover:-translate-y-1 hover:shadow-[0_12px_28px_-12px_rgba(43,42,38,0.28)] ${
+        selected
+          ? "border-accent ring-1 ring-accent/40"
+          : "border-edge hover:border-accent/60"
       }`}
     >
       <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <h3 className="truncate text-sm font-bold tracking-tight text-ink">
-            {app.name}
-          </h3>
-          <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wide text-mute">
-            {shortCategory(app)}
-            {lang && <span className="text-edge2"> · </span>}
-            {lang && <span className="normal-case text-blueprint">{lang}</span>}
-          </p>
+        <div className="flex min-w-0 items-start gap-2.5">
+          <Logo website={app.website} source={app.source} name={app.name} size={36} />
+          <div className="min-w-0">
+            <h3 className="truncate text-sm font-bold tracking-tight text-ink">
+              {app.name}
+            </h3>
+            <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wide text-mute">
+              {shortCategory(app)}
+              {lang && <span className="text-edge2"> · </span>}
+              {lang && <span className="normal-case text-blueprint">{lang}</span>}
+            </p>
+          </div>
         </div>
         <button
           onClick={() => toggle(app.id)}
@@ -90,7 +90,7 @@ export function AppCard({ app }: { app: App }) {
           )}
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }
 

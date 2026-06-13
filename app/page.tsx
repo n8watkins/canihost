@@ -56,7 +56,7 @@ export default async function Home() {
         <Directory apps={apps} meta={meta} />
       </main>
       <Footer />
-      <FloatingBuildBar />
+      <FloatingBuildBar apps={apps} />
     </SelectionProvider>
   );
 }
