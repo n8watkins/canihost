@@ -6,6 +6,8 @@ Start from a goal — _replace Google Photos, run your own Netflix, block ads ne
 
 🌐 **Live: [canihost.vercel.app](https://canihost.vercel.app)** · ☕ [Support on Ko-fi](https://ko-fi.com/n8watkins)
 
+> 🔧 **How it works:** see [HOW_IT_WORKS.md](./HOW_IT_WORKS.md) for the architecture, data pipeline, and internals.
+
 ![CanIHost — find self-hosted apps, plan your homelab, ship the compose file](assets/hero.png)
 
 ## Why
