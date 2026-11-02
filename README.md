@@ -1,5 +1,7 @@
 # CanIHost — search self-hosted apps, plan your homelab, generate docker-compose
 
+> **Archived (2026-11-01).** This project is no longer maintained and its live site has been taken down. The code stays here, read-only, for reference.
+
 **A real frontend for the famous [awesome-selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted) list that lets you browse by _what you want to do_ ("replace Google Photos") instead of tech jargon ("Photo Galleries") — plus a "Can I run this?" resource calculator and an auto docker-compose generator the list can't give you.**
 
 Start from a goal — _replace Google Photos, run your own Netflix, block ads network-wide_ — and CanIHost shows the self-hosted apps that do it, tells you whether your box can run them, and ships the `docker-compose.yml`. Browse 1,300+ apps, check maintenance signals at a glance, estimate combined RAM/CPU, and see ARM-vs-x86 compatibility — all free, open-source, and 100% client-side.
